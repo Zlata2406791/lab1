@@ -1,0 +1,41 @@
+print('Задание 3.1')
+
+import math
+
+# Функция для вычисления суммы s
+def compute_series_sum(x):
+    s = 0
+    i = 0
+    term = 1  # Первое значение ряда (i=0)
+    
+    while abs(term) >= 0.0001:
+        term = ((-1) ** i) * (x ** (2 * i)) / math.factorial(2 * i)
+        s += term
+        i += 1
+
+    return s
+
+# Основная функция, которая выполняет расчет для заданного диапазона
+def main(a, b, h):
+    x = a
+    results = []
+
+    while x <= b:
+        s = compute_series_sum(x)
+        y = math.cos(x)
+        results.append((x, s, y))
+        x += h
+
+    return results
+
+# Установка параметров
+a = 0.1
+b = 1.0
+h = 0.01
+
+# Выполнение расчетов
+results = main(a, b, h)
+
+# Вывод результатов
+for x, s, y in results:
+    print(f"x: {x:.1f}, S: {s:.6f}, y: {y:.6f}")
