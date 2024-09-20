@@ -1,0 +1,19 @@
+print('Задание 2.5')
+N = int(input("Введите N: "))
+M = int(input("Введите M (не 0): "))
+
+quotient = 0
+remainder = N
+
+if M == 0:
+    print("Деление на ноль невозможно!")
+else:
+    for _ in range(N):
+        if remainder >= M:
+            remainder -= M
+            quotient += 1
+        else:
+            break
+
+    print("Частное:", quotient)
+    print("Остаток:", remainder)
